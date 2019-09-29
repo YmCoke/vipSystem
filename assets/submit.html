@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/form-reset.css">
+    <link rel="stylesheet" href="css/submit.css">
+</head>
+
+<body>
+    <div class="container">
+        <h2 class="title">
+            <span>会员注册</span>
+        </h2>
+        <div class="form-area">
+            <form action="" class="form">
+                <div class="form-item">
+                    <label class="form-item-name" for="username">用户名</label>
+                    <input type="text" id="username" placeholder="请输入用户名">
+                </div>
+                <div class="form-item">
+                    <label class="form-item-name" for="password">密码</label>
+                    <input type="password" id="password" placeholder="密码由6-16个字符组成, 区分大小写">
+                </div>
+                <div class="form-item">
+                    <label class="form-item-name" for="repassword">确认密码</label>
+                    <input type="password" id="repassword">
+                </div>
+                <div class="form-item">
+                    <label class="form-item-name">性别</label>
+                    
+                    <label for="male">
+                        <input type="radio" id="male" name="gendder" checked>
+                        <span class="radio"></span>
+                        男
+                    </label>
+                    <label for="female">
+                        <input type="radio" id="female"name="gendder">
+                        <span class="radio"></span>
+                        女</label>
+                </div>
+                <div class="form-item">
+                    <label class="form-item-name">爱好</label>
+                    <label for="PE">
+                        <input type="checkbox" name="hobby" id="PE">
+                        <span class="checkbox"></span>
+                        体育
+                    </label>
+                    <label for="music">
+                        <input type="checkbox" name="hobby" id="music">
+                        <span class="checkbox"></span>
+                        音乐
+                    </label>
+                    <label for="literature">
+                        <input type="checkbox" name="hobby" id="literature">
+                        <span class="checkbox"></span>
+                        文学
+                    </label>
+                    <label for="other-hobby">
+                        <input type="checkbox" name="hobby" id="other-hobby">
+                        <span class="checkbox"></span>
+                        其它
+                    </label>
+                </div>
+                <div class="cur-city form-item">
+                    <label class="form-item-name">所在城市</label>
+                    <select name="" id="">
+                        <option value="">北京</option>
+                        <option value="">Lorem.</option>
+                        <option value="">Nobis!</option>
+                        <option value="">Consequuntur!</option>
+                        <option value="">Vitae!</option>
+                        <option value="">Sed.</option>
+                    </select>
+                </div>
+                <div class="form-item">
+                    <label class="form-item-name">照片
+                        
+                    </label>
+                    <label>
+                        <input type="file" id="photo">
+                        <span class="local-file">选择本地文件</span>
+                    </label>
+                </div>
+                <div class="form-item">
+                    <label for="remark" class="form-item-name">备注</label>
+                    <textarea name="" id="remark"></textarea>
+                </div>
+                <div class="form-item">
+                    <label class="form-item-name"></label>
+                    <button type="submit">提交</button>
+                    <button type="reset">重置</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

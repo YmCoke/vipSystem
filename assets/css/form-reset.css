@@ -1,0 +1,166 @@
+input[type="text"], input[type="password"] {
+    width: 180px;
+    height: 40px;
+    padding: 0 15px;
+    border: 1px solid #dcdfe6;
+    box-sizing: border-box;
+    color: #ccc;
+    border-radius: 4px;
+    transition: all .2s;
+    cursor: pointer;
+    font-size: inherit;
+}
+input[type="text"]::placeholder, input[type="password"]::placeholder {
+    color: #ddd;
+}
+
+input[type="text"]:focus, input[type="password"]:focus {
+    border-color: #409eff;
+    color: #606266;
+}
+
+input[type="text"]:disabled, input[type="password"]:disabled {
+    cursor: not-allowed;
+    background-color: #f5f7fa;
+    border-color: #e4e7ed;
+    color: #c0c4cc;
+}
+
+input[type="radio"] {
+    display: none;
+}
+input[type="radio"] + span.radio {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border: 1px solid #606266;
+    border-radius: 50%;
+    box-sizing: border-box;
+}
+input[type="radio"]:checked + span.radio {
+    background-color: #409eff;
+    border-color: #409eff;
+}
+
+input[type="radio"] + span.radio::after {
+    width: 0px;
+    height: 0px;
+    display: block;
+    content: "";
+    position: absolute;
+    background-color: #fff;
+    margin-left: 3px;
+    margin-top: 3px;
+    border-radius: 50%;
+    transition: width,height .2s;
+}
+input[type="radio"]:checked + span.radio::after {
+    width: 4px;
+    height: 4px;
+}
+
+input[type="checkbox"]{
+    display: none;
+}
+input[type="checkbox"] + span.checkbox {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border: 1px solid #dcdfe6;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+input[type="checkbox"] + span.checkbox::after {
+    display: none;
+    content: "";
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background-color: #00a1d6;
+    margin-left: 2px;
+    margin-top: 2px;
+    border-radius: 2px;
+}
+input[type="checkbox"]:checked + span.checkbox {
+    border-color: #00a1d6;
+}
+input[type="checkbox"]:checked + span.checkbox:after {
+    display: block;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+button {
+    padding: 12px 23px;
+    cursor: pointer;
+    border: 1px solid #606266;    
+    background-color: #fff;
+    border-radius: 4px;
+    transition: background-color, border .2s;
+}
+button.pain {
+    border-radius: 20px;
+}
+button:hover {
+    color: #409eff;
+    border-color: #c6e2ff;
+    background-color: #ecf5ff;
+}
+
+button[type="success"] {
+    color: #fff;
+    background-color: #67c23a;
+    border-color: #67c23a;
+}
+button[type="success"]:hover {
+    background: #85ce61;
+    border-color: #85ce61;
+    color: #fff;
+}
+
+button[type="reset"] {
+    color: #fff;
+    background-color: #909399;
+    border-color: #909399;
+}
+button[type="reset"]:hover {
+    background: #a6a9ad;
+    border-color: #a6a9ad;
+    color: #fff;
+}
+
+select {
+    padding-left: 15px;
+    padding-right: 30px;
+    border: 1px solid #c0c4cc;
+    color: #c0c4cc;
+    box-sizing: border-box;
+    font-size: 14px;
+    width: 100px;
+    height: 30px;
+    transition: all .2s;
+    border-radius: 4px;
+}
+select:focus {
+    color: #606266;
+}
+
+textarea {
+    border-radius: 4px;
+    resize: vertical;
+    border: 1px solid#dcdfe6;
+    transition: border-color .2s;
+    box-sizing: border-box;
+    padding: 5px 15px;
+    color: #c0c4cc;
+    vertical-align: middle;
+}
+textarea:hover {
+    border-color: #c0c4cc;
+}
+textarea:focus {
+    border-color: #00a1d6;
+    color: #606266;
+}
