@@ -2,44 +2,67 @@ function Form(form) {
     this.init(form);
 }
 
+// 初始化数据
 Form.prototype.init = function (form) {
+    // 保存dom元素, 进行管理
     this.dom = form;
+    // 设置提交的用户信息中必须要有的值
+    this.mustMsg = ['username','password','repassword','gender','curCity', 'email'];
+    // 将用户信息存放起来, 发送数据的 "包裹"
     this.formData = new FormData();
 }
 
+// 发送数据逻辑
 Form.prototype.sendMsg = function () {
-    const sendData = this._getData();
-    console.log(sendData);
-    if (this.userData.password !== this.userData.repassword) {
-        alert("密码不一致, 请重新输入");
+    // 获取页面上的表单数据
+    this._getData();
+    // 检查数据信息是否合格
+    const checkMsg = this.checkMsg();
+    if (checkMsg.status == 'error') {
+        alert(checkMsg.msg);
     } else {
+        console.log(this.userData);
         // 发送ajax
-
-        const xhr = new XMLHttpRequest();
-        xhr.open('post', '/sendMsg', true);
-        xhr.send(sendData);
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState == 4 && xhr.status == 200) {
-                console.log(xhr.responseText);
-                if (xhr.responseText == "success") {
-                    alert("注册成功");
-                }
+        _ajax.post('/sendMsg', this.formData, function (result) {
+            if (result == 'success') {
+                alert("注册成功");
+                location.pathname = "/main.html";
             }
+        })
+    }
+}
+
+// 检查表单中的数据是否不合格
+Form.prototype.checkMsg = function () {
+    for (let i = 0;i < this.mustMsg.length; i++) {
+        if (!this.userData[this.mustMsg[i]]) {
+            return _util.getObj('error', '用户信息缺少' + this.mustMsg[i]);
         }
     }
-
-}
-
-Form.prototype._getData = function () {
-    const data = _serialize(this.dom);
-    this.userData = data;
-    console.log(data);
-    for (let prop in data) {
-        this.formData.append(prop, data[prop]);
+    if (this.userData.password.length < 6) {
+        return _util.getObj('error', '密码长度小于6个字符');
     }
-    return this.formData;
+    if (this.userData.password.length > 16) {
+        return _util.getObj('error', '密码长度大于16个字符');
+    }
+    if (this.userData.password !== this.userData.repassword) {
+        return _util.getObj('error', '密码不一致');
+    }
+    if (this.userData.email.indexOf("@") == -1) {
+        return _util.getObj('error', '邮箱格式错误');
+    }
+    return _util.getObj('success', '用户信息完整');
 }
 
+// 获取页面上的表单数据
+Form.prototype._getData = function () {
+    this.userData = _serialize(this.dom);
+    for (let prop in this.userData) {
+        this.formData.append(prop, this.userData[prop]);
+    }
+}
+
+// 深搜算法
 function _serialize(root, data = {}) {
     if (!root || root.nodeType != 1) {
         return;
@@ -68,4 +91,24 @@ function _serialize(root, data = {}) {
         }
     }
     return data;
+}
+
+// 工具方法:
+var _util = {
+    // 传入一个状态与信息参数, 返回对象形式.
+    getObj: (status, msg) => ({status, msg})
+}
+
+// 封装ajax工具
+var _ajax = {
+    post (url, data, success) {
+        const xhr = new XMLHttpRequest();
+        xhr.open('post', url, true);
+        xhr.send(data);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                success(xhr.responseText);
+            }
+        }
+    }
 }

@@ -31,6 +31,10 @@
                     <input type="password" id="repassword" name="repassword">
                 </div>
                 <div class="form-item">
+                    <label class="form-item-name" for="email">邮箱</label>
+                    <input type="text" id="email" name="email">
+                </div>
+                <div class="form-item">
                     <label class="form-item-name">性别</label>
                     
                     <label for="male">
@@ -106,9 +110,9 @@
         // formController.getData();
 
         const buttonSubmit = document.getElementById("submit");
-        buttonSubmit.onclick = function () {
+        buttonSubmit.onclick = function (event) {
+            event.preventDefault();
             formController.sendMsg();
-            return false;
         }
     </script>
 </body>
